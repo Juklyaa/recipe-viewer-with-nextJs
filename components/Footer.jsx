@@ -5,11 +5,11 @@ const Footer = () => {
   const {footer, logo} = styles;
   return (
     <footer className={footer}>
-        Footer {' '}
-        Powered by{' '}
-        <span className={logo}>
-          <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-        </span>
+      Footer {' '}
+      Powered by{' '}
+      <span className={logo}>
+        <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+      </span>
     </footer>
   );
 };

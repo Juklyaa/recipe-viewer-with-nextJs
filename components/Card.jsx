@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import Button from '../Button';
-import {useFavoritesContext} from '../../context/favoritesContext';
-import { cutName } from '../../shared/helpers';
-import styles from '../../styles/components.module.css';
+import Image from 'next/image';
+import Button from './Button';
+import {useFavoritesContext} from '../context/favoritesContext';
+import styles from '../styles/components.module.css';
 
-const Card = ({ item, type, withButton, srcIcon, handleClick, ariaLabel }) => {
+const Card = ({ item, type, withButton, srcIcon, handleClick, ariaLabel, width = 300, height = 300 }) => {
   const {addFavoriteButtonSmall, favoriteRecipe} = styles;
   const {favorites, setFavorites} = useFavoritesContext();
-  const [loved, setLoved] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const handlerOnClick = (e, item) => {
     e.preventDefault();
     e.stopPropagation();
-    if(!loved) {
+    if(!isFavorite) {
       handleClick(favorites, setFavorites, item);
-      setLoved(true)
+      setIsFavorite(true);
     }
   }
 
@@ -30,18 +30,17 @@ const Card = ({ item, type, withButton, srcIcon, handleClick, ariaLabel }) => {
     return `/${type.toLowerCase()}/${item[key].toLowerCase()}`
   };
 
-
   return(
     <Link href={getUrl(item)}>
       <a>
-        <h2>{cutName(item[key])}</h2>
+        <h2>{item[key]}</h2>
         <div>
-          <img src={item[`${key}Thumb`]} alt={`photo tasty ${item[key]}`}/>
+          <Image src={item[`${key}Thumb`]} alt={`photo tasty ${item[key]}`} width={width} height={height}/>
         </div>
         {
           withButton && (
             <Button
-              className={`${addFavoriteButtonSmall} ${loved ? favoriteRecipe : ''}`}
+              className={`${addFavoriteButtonSmall} ${isFavorite ? favoriteRecipe : ''}`}
               handlerClick={(e) => handlerOnClick(e,item)}
               srcIcon={srcIcon}
               ariaLabel={ariaLabel}

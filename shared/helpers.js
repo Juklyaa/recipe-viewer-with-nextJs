@@ -17,10 +17,6 @@ const fetchData = async (url) => {
 export const findMealById = async (url) => await fetchData(url);
 export const filterMealsByCategory = async (category) => await fetchData(`${FILTER_PHP_URL}${URL_SEARCH_CATEGORY}${category}`);
 
-export const cutName = name => {
-  return name.length < 22 ? name : `${name.slice(0,22)}...`
-};
-
 export const getArrayValuesByString = (arr, str) => {
   const keys = Object.keys(arr).filter(item => {
     return item.includes(str) && arr[item];

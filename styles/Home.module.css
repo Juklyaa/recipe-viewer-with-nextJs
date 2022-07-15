@@ -8,8 +8,15 @@
   padding: 1rem;
 }
 
-.main h1{
+.main h1 {
   text-transform: capitalize;
+}
+
+.main h2 {
+  width: calc(100% - 2rem);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .footer {
@@ -78,10 +85,10 @@
 }
 
 @media (max-width: 480px) {
-  .main h1{
+  .main h1 {
     font-size: 1.5rem;
   }
-  .main h2{
+  .main h2 {
     font-size: 1rem;
   } 
 }

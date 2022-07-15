@@ -1,8 +1,8 @@
 import React from 'react';
 import Card from './Card';
-import styles from '../../styles/components.module.css';
+import styles from '../styles/components.module.css';
 
-export const Cards = (props) => {
+export const CardsList = (props) => {
   const {grid, card} = styles;
   const {categories, type} = props;
 

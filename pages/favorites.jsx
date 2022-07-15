@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Cards } from '../components/Cards';
+import { CardsList } from '../components/CardsList';
 import { removeRecipes } from '../context/helpers';
 import { useFavoritesContext } from '../context/favoritesContext';
 
@@ -21,7 +21,7 @@ export default function Favorites() {
       <h1>
         Your Favorites recipes
       </h1>
-      <Cards
+      <CardsList
         withButton
         type="Meal"
         srcIcon="/minus.ico"

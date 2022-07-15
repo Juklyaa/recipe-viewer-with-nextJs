@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import useSWR from 'swr';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { env } from '../../next.config';
 import Button from '../../components/Button';
@@ -11,7 +12,7 @@ import styles from '../../styles/Meal.module.css';
 const MealRecipe = () => {
   const { query } = useRouter();
   const { favorites, setFavorites} = useFavoritesContext();
-  const [loved, setLoved] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const {
     recipe,
@@ -41,9 +42,9 @@ const MealRecipe = () => {
   const measures = getArrayValuesByString(meal, 'strMeasure');
 
   const addFavoritesRecipe = () => {
-    if(!loved) {
+    if(!isFavorite) {
       addRecipeToFavors(favorites, setFavorites, meal);
-      setLoved(true)
+      setIsFavorite(true);
     }
   }
 
@@ -55,7 +56,7 @@ const MealRecipe = () => {
 
         <div className={recipe}>
           <div>
-            <img src={meal.strMealThumb} alt={`photo ${meal.strMeal}`} width="100%"/>
+            <Image src={meal.strMealThumb} alt={`photo ${meal.strMeal}`} width={500} height={500}/>
           </div>
           <div className={listIngredients}>
             <h2>You need:</h2>
@@ -74,10 +75,10 @@ const MealRecipe = () => {
         </p>
       </div>
       <Button
-        className={`${addFavoriteButton} ${loved ? favoriteRecipe : ''}`}
+        className={`${addFavoriteButton} ${isFavorite ? favoriteRecipe : ''}`}
         handlerClick={addFavoritesRecipe}
         srcIcon="/favorite.ico"
-        text={`${loved ? 'Added to favorite recipes' : 'Add to favorite recipes'}`}
+        text={`${isFavorite ? 'Added to favorite recipes' : 'Add to favorite recipes'}`}
       />
     </div>
   );

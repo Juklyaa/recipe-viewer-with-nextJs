@@ -1,15 +1,19 @@
 import styles from '../styles/Home.module.css'
-import { Cards } from '../components/Cards';
+import { CardsList } from '../components/CardsList';
 import { BASE_PHP_URL } from '../shared/helpers';
 
 export default function Home({categories}) {
-
   return (
     <>
       <h1 className={styles.title}>
         The best recipes
       </h1>
-      <Cards categories={categories} type="Category" />
+      <CardsList
+        categories={categories}
+        type="Category"
+        width={320}
+        height={200}
+      />
     </>
   )
 }

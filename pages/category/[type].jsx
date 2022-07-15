@@ -1,13 +1,13 @@
-import { Cards } from '../../components/Cards';
+import { CardsList } from '../../components/CardsList';
 import { addRecipeToFavors } from '../../context/helpers';
 import { BASE_PHP_URL, filterMealsByCategory } from '../../shared/helpers';
 
 const MealsPage = ({ meals, type }) => {
   return(
     <>
-      <h1>{type.to}</h1>
+      <h1>{type}</h1>
       <p>The best meals from different countries</p>
-      <Cards
+      <CardsList
         withButton
         type="Meal"
         categories={meals}
@@ -29,7 +29,7 @@ export const getStaticPaths = async () => {
   }));
 
   const paths = Array.from(new Set(allPaths.map(JSON.stringify))).map(
-    (i) => JSON.parse(i)
+    (item) => JSON.parse(item)
   );
 
   return {

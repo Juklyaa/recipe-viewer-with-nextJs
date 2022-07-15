@@ -16,17 +16,18 @@ export const useFavoritesContext = () => {
 
 export const FavoritesContextProvider = ({ children }) => {
 
-  const [favorites, setFavorites] = useState([])
+  const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
     const favorites = localStorage.getItem('favorites');
-    setFavorites(favorites ? JSON.parse(favorites) : [])
+    setFavorites(favorites ? JSON.parse(favorites) : []);
   }, [])
 
 
   useEffect(() => {
-    if(favorites.length === 0) return;
-    localStorage.setItem('favorites', JSON.stringify(favorites));
+    if (favorites) {
+      localStorage.setItem('favorites', JSON.stringify(favorites));
+    }
   }, [favorites]);
   
 

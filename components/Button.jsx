@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styles from '../styles/components.module.css'
 
 const Button = ({
@@ -14,7 +15,7 @@ const Button = ({
       className={`${styles.btn} ${className}`}
       aria-label={ariaLabel}
     >
-      { srcIcon ? <img src={srcIcon} alt="icon" aria-hidden="true" width={30} height={30}/> : null}
+      { srcIcon ? <Image src={srcIcon} alt="icon" aria-hidden="true" width={30} height={30}/> : null}
       {text}
     </button>
   );
