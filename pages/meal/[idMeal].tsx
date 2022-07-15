@@ -1,15 +1,17 @@
 import { useState } from 'react';
-import useSWR from 'swr';
+import useSWR, { Key } from 'swr';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { env } from '../../next.config';
-import Button from '../../components/Button';
-import { addRecipeToFavors } from '../../context/helpers';
+import { NextPage } from 'next';
+
+import Button from '@components/Button';
+import { addRecipeToFavors } from '@context/helpers';
 import { useFavoritesContext } from '../../context/favoritesContext';
 import { findMealById, getArrayValuesByString } from '../../shared/helpers';
-import styles from '../../styles/Meal.module.css';
+import styles from '@styles/Meal.module.css';
 
-const MealRecipe = () => {
+const MealRecipe:NextPage = () => {
   const { query } = useRouter();
   const { favorites, setFavorites} = useFavoritesContext();
   const [isFavorite, setIsFavorite] = useState(false);
@@ -26,16 +28,13 @@ const MealRecipe = () => {
     instructionContainer
   } = styles;
 
-  const key = `${env.FIND_PHP_URL}?i=${query.idMeal}`;
+  const key: Key = `${env.FIND_PHP_URL}?i=${query.idMeal}`;
 
-  const { data, error } = useSWR(
-    query.idMeal ? key : null,
-    findMealById
-  );
+  const { data, error } = useSWR(key, findMealById)
   
   if (error) return <div>{error.message}</div>
   if (!data) return <div>Loading...</div>
-  
+
   const [meal] = data.meals;
 
   const ingredients = getArrayValuesByString(meal, 'strIngredient');
@@ -47,7 +46,7 @@ const MealRecipe = () => {
       setIsFavorite(true);
     }
   }
-
+  
   return(
     <div className={container}>
       <div className={grid}>

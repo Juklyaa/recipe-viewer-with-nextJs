@@ -1,8 +1,10 @@
+import React, { FC } from 'react';
 import Image from 'next/image';
-import styles from '../styles/Home.module.css'
+import styles from '@styles/Home.module.css';
 
-const Footer = () => {
+const Footer: FC = () => {
   const {footer, logo} = styles;
+
   return (
     <footer className={footer}>
       Footer {' '}

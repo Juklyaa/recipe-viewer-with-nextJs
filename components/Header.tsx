@@ -1,8 +1,9 @@
+import React, { FC } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import styles from '../styles/components.module.css';
+import styles from '@styles/components.module.css';
 
-const Header = () => {
+const Header: FC = () => {
   const { container, navItem, active, nav } = styles;
 
   return (

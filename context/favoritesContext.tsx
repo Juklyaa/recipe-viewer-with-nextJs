@@ -1,20 +1,31 @@
 import {
+  Dispatch,
+  SetStateAction,
   createContext,
   useEffect,
   useContext,
   useState,
+  ReactNode,
+  FC,
 } from 'react';
 
-export const FavoritesContext = createContext({
+import { IMeal } from '../shared/types';
+
+type FavoritesContextT = {
+  favorites: IMeal[];
+  setFavorites: Dispatch<SetStateAction<IMeal[]>>;
+};
+
+export const FavoritesContext = createContext<FavoritesContextT>({
   favorites: [],
   setFavorites: () => [],
 });
 
-export const useFavoritesContext = () => {
+export const useFavoritesContext = (): FavoritesContextT => {
   return useContext(FavoritesContext);
 };
 
-export const FavoritesContextProvider = ({ children }) => {
+export const FavoritesContextProvider: FC<{children: ReactNode}> = ({ children }) => {
 
   const [favorites, setFavorites] = useState([]);
 
@@ -25,7 +36,7 @@ export const FavoritesContextProvider = ({ children }) => {
 
 
   useEffect(() => {
-    if (favorites) {
+    if (favorites.length) {
       localStorage.setItem('favorites', JSON.stringify(favorites));
     }
   }, [favorites]);

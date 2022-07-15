@@ -1,8 +1,9 @@
+import { GetStaticProps, NextPage } from 'next';
 import styles from '../styles/Home.module.css'
 import { CardsList } from '../components/CardsList';
 import { BASE_PHP_URL } from '../shared/helpers';
 
-export default function Home({categories}) {
+const Home: NextPage<{ categories: string[] }> = ({categories}) => {
   return (
     <>
       <h1 className={styles.title}>
@@ -18,7 +19,7 @@ export default function Home({categories}) {
   )
 }
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const res = await fetch(BASE_PHP_URL);
   const products = await res.json();
 
@@ -28,3 +29,5 @@ export const getStaticProps = async () => {
     },
   };
 };
+
+export default Home;
