@@ -1,26 +1,20 @@
-import { BASE_PHP_URL, fetchFilterData, cutName } from '../../shared/helpers';
-import styles from '../../styles/Home.module.css';
+import { Cards } from '../../components/Cards';
+import { addRecipeToFavors } from '../../context/helpers';
+import { BASE_PHP_URL, filterMealsByCategory } from '../../shared/helpers';
 
-const MealsPage = ({
-  meals,
-  type,
-}) => {
-  const {grid, card} = styles;
-
+const MealsPage = ({ meals, type }) => {
   return(
     <>
-      <h2>{type}</h2>
+      <h1>{type.to}</h1>
       <p>The best meals from different countries</p>
-      <ul className={grid}>
-        {meals.map( meal => (
-          <li className={card} key={meal.idMeal}>
-            <h3>{cutName(meal.strMeal)}</h3>
-            <div>
-              <img src={meal.strMealThumb} alt={`photo ${meal.strMeal}}`} />
-            </div>
-          </li>
-        ))}
-      </ul>
+      <Cards
+        withButton
+        type="Meal"
+        categories={meals}
+        srcIcon="/favorite.ico"
+        handleClick={addRecipeToFavors}
+        ariaLabel="Add the recipe to favorites"
+      />
     </>
   );
 };
@@ -45,7 +39,7 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  const products = await fetchFilterData(params.type);
+  const products = await filterMealsByCategory(params.type);
 
   return {
     props: {

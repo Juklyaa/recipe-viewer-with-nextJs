@@ -1,25 +1,28 @@
-// import Image from 'next/image';
-// import Link from 'next/link';
-// import styles from '@styles/header.module.scss';
+import Link from 'next/link';
+import styles from '../styles/components.module.css';
 
-const Header = ({ items }) => {
-  // const { headerContainer, link, nav } = styles;
+const Header = () => {
+  const { container, navItem, active, nav } = styles;
 
   return (
-    <header>
-      HEADER
-      {/*
-      <Link href="/">
-        <Image src="/favicon.ico" alt="go home" width={50} height={50} />
-      </Link>
-      <nav className={nav}>
-        {items.map((item) => (
-          <Link href={`/${item}`} key={item}>
-            <a className={link}>{item}</a>
+    <header className={container}>
+        <div>
+          <Link href="/">
+            <img src="/home.ico" alt="go home" width={30} height={30} />
           </Link>
-        ))}
-      </nav>
-      */}
+        </div>
+        <nav className={nav}>
+          <div className={`${navItem}`}>
+            <img src="/person.ico" aria-hidden="true" alt="log in" width={30} height={30}/>
+            <span>James Bond</span>
+          </div>
+          <Link href="/favorites">
+            <a className={`${navItem} ${active}`}>
+              <img src="/favorite.ico" aria-hidden="true" alt="favorite" width={30} height={30}/>
+              <span>Favorite recipes</span>
+            </a>
+          </Link>
+        </nav>
     </header>
   );
 };

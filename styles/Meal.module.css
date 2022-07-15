@@ -1,0 +1,72 @@
+.container{
+  position: relative;
+}
+
+.favoriteRecipe {
+  color: white;
+  background-color: #3c4fe0;
+}
+
+.addFavoriteButton {
+  position: absolute;
+  top: 1rem;
+  right: 0px;
+  padding: 1rem;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+}
+
+.area {
+  margin: 1rem;
+  padding: 1rem;
+  
+}
+.area:hover {
+  box-shadow: 0 0.5rem 1rem 0 rgba(0,0,0,0.2);
+}
+
+.recipe{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.listIngredients{
+  margin-left: 2rem;
+}
+
+.link{
+  margin: 0.2rem;
+  color: blue;
+}
+
+.instructionContainer{
+  padding: 2rem;
+  border: rgb(128, 128, 128) solid 1px;
+  margin: 2rem;
+  line-height: 1.5rem;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0,0,0,0.2);
+}
+
+@media (max-width: 680px) {
+  .addFavoriteButton{
+    top: 10rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .addFavoriteButton{
+    top: 0;
+    font-size: 0;
+  }
+  .instructionContainer{
+    margin: 0;
+    padding: 1rem;
+  }
+}
