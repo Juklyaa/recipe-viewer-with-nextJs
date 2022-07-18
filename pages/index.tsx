@@ -1,9 +1,10 @@
 import { GetStaticProps, NextPage } from 'next';
-import styles from '../styles/Home.module.css'
-import { CardsList } from '../components/CardsList';
-import { BASE_PHP_URL } from '../shared/helpers';
+import styles from '@styles/Home.module.css'
+import { CardsList } from '@components/CardsList';
+import { getCategory } from '@shared/helpers';
+import { ICategory } from '@shared/types';
 
-const Home: NextPage<{ categories: string[] }> = ({categories}) => {
+const Home: NextPage<{ categories: ICategory[] }> = ({categories}) => {
   return (
     <>
       <h1 className={styles.title}>
@@ -20,8 +21,7 @@ const Home: NextPage<{ categories: string[] }> = ({categories}) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch(BASE_PHP_URL);
-  const products = await res.json();
+  const products = await getCategory();
 
   return {
     props: {

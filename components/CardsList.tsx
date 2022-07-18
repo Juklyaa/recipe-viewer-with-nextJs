@@ -1,10 +1,9 @@
 import React, { FC } from 'react';
-import { Card, ICardComponent } from '@components/Card';
+import { Card, ICardComponent, CardT } from '@components/Card';
 import styles from '@styles/components.module.css';
-import { IMeal, IMealInCategory } from '@shared/types';
 
 interface IListCard extends ICardComponent { 
-  categories: IMeal[] | IMealInCategory[]
+  categories: CardT[]
 }
 
 export const CardsList: FC<IListCard> = (props) => {
@@ -13,7 +12,7 @@ export const CardsList: FC<IListCard> = (props) => {
 
   return(
     <ul className={grid}>
-      {categories.map((item: IMeal | IMealInCategory) => (
+      {categories.map((item: CardT) => (
         <li className={card} key={item[`id${type}`]}>
           <Card item={item} {...props}/>
         </li>

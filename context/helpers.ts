@@ -1,7 +1,7 @@
-import { IMeal } from 'shared/types';
+import { IMeal, setFavoritesT } from 'shared/types';
 
 
-export const addRecipeToFavors = (favorites: IMeal[], setFavorites: any, meal: IMeal) => {
+export const addRecipeToFavors = (favorites: IMeal[], setFavorites: setFavoritesT, meal: IMeal) => {
   if (favorites.length === 0) {
       setFavorites([meal]);
   } else {
@@ -11,6 +11,6 @@ export const addRecipeToFavors = (favorites: IMeal[], setFavorites: any, meal: I
   }
 };
 
-export const removeRecipes =  (favorites: IMeal[], setFavorites: any, meal: IMeal) => {
+export const removeRecipes =  (favorites: IMeal[], setFavorites: setFavoritesT, meal: IMeal) => {
   setFavorites(favorites.filter((item: IMeal) => item.idMeal !== meal.idMeal));
 };

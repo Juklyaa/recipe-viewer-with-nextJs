@@ -1,9 +1,10 @@
+import { NextPage } from 'next';
 import Link from 'next/link';
-import { CardsList } from '../components/CardsList';
-import { removeRecipes } from '../context/helpers';
-import { useFavoritesContext } from '../context/favoritesContext';
+import { CardsList } from '@components/CardsList';
+import { removeRecipes } from '@context/helpers';
+import { useFavoritesContext } from '@context/favoritesContext';
 
-export default function Favorites() {
+const Favorites: NextPage = () => {
   const { favorites } = useFavoritesContext();
 
   if (!favorites.length) return (
@@ -32,4 +33,6 @@ export default function Favorites() {
     </>
   )
 }
+
+export default Favorites;
 

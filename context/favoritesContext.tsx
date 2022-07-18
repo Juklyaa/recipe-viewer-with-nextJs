@@ -1,6 +1,4 @@
 import {
-  Dispatch,
-  SetStateAction,
   createContext,
   useEffect,
   useContext,
@@ -9,11 +7,11 @@ import {
   FC,
 } from 'react';
 
-import { IMeal } from '../shared/types';
+import { IMeal, setFavoritesT } from '../shared/types';
 
 type FavoritesContextT = {
   favorites: IMeal[];
-  setFavorites: Dispatch<SetStateAction<IMeal[]>>;
+  setFavorites: setFavoritesT;
 };
 
 export const FavoritesContext = createContext<FavoritesContextT>({

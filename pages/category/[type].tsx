@@ -1,9 +1,8 @@
 import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import { CardsList } from '../../components/CardsList';
 import { addRecipeToFavors } from '../../context/helpers';
-import { BASE_PHP_URL, filterMealsByCategory } from '../../shared/helpers';
+import { getCategory, filterMealsByCategory } from '../../shared/helpers';
 import { IMealInCategory,  ICategory } from '@shared/types';
-import { listenerCount } from 'process';
 
 interface IMealsPage {
   meals: IMealInCategory[]
@@ -31,14 +30,13 @@ export const getStaticPaths: GetStaticPaths = async ():Promise<{
   paths: string[];
   fallback: false;
 }> => {
-  const res = await fetch(BASE_PHP_URL);
-  const products = await res.json();
+  const products = await getCategory();
 
   const allPaths = products.categories.map((product:ICategory) => ({
     params: { type: product.strCategory.toLowerCase() },
   }));
 
-  const paths = Array.from(new Set(allPaths.map(JSON.stringify))).map(
+  const paths = Array.from(new Set(allPaths.map((item) => JSON.stringify(item)))).map(
     (item: string):string => JSON.parse(item)
   );
 

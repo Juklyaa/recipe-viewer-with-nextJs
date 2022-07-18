@@ -1,4 +1,4 @@
-import React, {FC} from 'react'
+import React, { FC } from 'react'
 import Image from 'next/image';
 import styles from '@styles/components.module.css';
 

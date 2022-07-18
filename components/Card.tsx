@@ -1,23 +1,25 @@
-import React, { useState, FC, Dispatch, SetStateAction } from 'react';
+import React, { useState, FC } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Button from './Button';
-import { useFavoritesContext } from '../context/favoritesContext';
-import { IMeal, IMealInCategory } from '../shared/types';
-import styles from '../styles/components.module.css';
+import { useFavoritesContext } from '@context/favoritesContext';
+import { IMeal, IMealInCategory, ICategory, setFavoritesT } from '@shared/types';
+import styles from '@styles/components.module.css';
 
+export type CardT = IMeal | IMealInCategory | ICategory;
 export interface ICardComponent {
   type: string,
   withButton?: boolean,
   srcIcon?: string,
-  handleClick?: (favorites: IMeal[], setFavorites: Dispatch<SetStateAction<IMeal[]>>, item: IMeal | IMealInCategory) => void,
+  handleClick?:
+    (favorites: IMeal[], setFavorites: setFavoritesT, item: CardT) => void,
   ariaLabel?: string,
   width?:number,
   height?:number
 }
 
 interface IProps extends ICardComponent { 
-  item: IMeal | IMealInCategory
+  item: CardT
 }
 
 export const Card: FC<IProps> =({

@@ -10,7 +10,9 @@ const Header: FC = () => {
     <header className={container}>
       <div>
         <Link href="/">
-          <Image src="/home.ico" alt="go home" width={30} height={30} />
+          <a>
+            <Image src="/home.ico" alt="go home" width={30} height={30} />
+          </a>
         </Link>
       </div>
       <nav className={nav}>

@@ -7,8 +7,8 @@ import { NextPage } from 'next';
 
 import Button from '@components/Button';
 import { addRecipeToFavors } from '@context/helpers';
-import { useFavoritesContext } from '../../context/favoritesContext';
-import { findMealById, getArrayValuesByString } from '../../shared/helpers';
+import { useFavoritesContext } from '@context/favoritesContext';
+import { findMealById, getArrayValuesByString } from '@shared/helpers';
 import styles from '@styles/Meal.module.css';
 
 const MealRecipe:NextPage = () => {

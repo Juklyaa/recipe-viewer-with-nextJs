@@ -24,7 +24,4 @@ export interface IMealInCategory {
   idMeal: string
 }
 
-export interface IComponentProps {
-  favorites: IMeal[];
-  setFavorites: Dispatch<SetStateAction<IMeal[]>>;
-}
+export type setFavoritesT = Dispatch<SetStateAction<IMeal[]>>;

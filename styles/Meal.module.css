@@ -39,6 +39,7 @@
 
 .listIngredients{
   margin-left: 2rem;
+  min-width: 10rem;
 }
 
 .link{

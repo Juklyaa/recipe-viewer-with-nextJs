@@ -2,8 +2,8 @@ import { FC } from 'react';
 import { AppProps } from 'next/app';
 import Head from 'next/head'
 import { Layout } from '@components/Layout';
-import { FavoritesContextProvider } from '../context/favoritesContext';
-import '../styles/globals.css';
+import { FavoritesContextProvider } from '@context/favoritesContext';
+import '@styles/globals.css';
 
 const App:FC<AppProps> = ({ Component, pageProps }) => (
   <>
