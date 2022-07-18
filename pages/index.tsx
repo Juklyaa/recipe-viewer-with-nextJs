@@ -27,6 +27,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       categories: products.categories,
     },
+    revalidate: 60
   };
 };
 

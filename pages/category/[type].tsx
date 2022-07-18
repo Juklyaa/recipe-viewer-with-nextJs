@@ -28,7 +28,7 @@ const MealsPage: NextPage<IMealsPage> = ({ meals, type }) => {
 
 export const getStaticPaths: GetStaticPaths = async ():Promise<{
   paths: string[];
-  fallback: false;
+  fallback: true;
 }> => {
   const products = await getCategory();
 
@@ -42,7 +42,7 @@ export const getStaticPaths: GetStaticPaths = async ():Promise<{
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 };
 
@@ -54,6 +54,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       meals: list.meals,
       type: params.type,
     },
+    revalidate: 60
   };
 };
 
